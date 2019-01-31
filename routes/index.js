@@ -3,23 +3,32 @@ var Twitter = require('twitter');
 var router = express.Router();
 var keys = require('../keys/twitterKeys')
 
- 
-var client = new Twitter({
+let client = new Twitter({
   consumer_key: keys.consumer_key,
   consumer_secret: keys.consumer_secret,
   access_token_key: keys.access_token_key,
   access_token_secret: keys.access_token_secret
 });
- 
-var params = {screen_name: 'nodejs'};
-client.get('statuses/user_timeline', params, function(error, tweets, response) {
-  if (!error) {
-    console.log(tweets);
-  }
-});
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', async (req, res, next) => {
+  var params = {screen_name: 'fatmafouad_y'};
+  let tweets = await client.get('statuses/user_timeline', params)
+  let listOfTweets = []
+  for(let tweet of tweets){
+    // method 1
+    // entry = {}
+    // entry.text = tweet.text
+    // entry.reply = tweeet.in_reply_to_screen_name
+    // listOftext.push( entry )
+    // method 2
+    // listOftext.push({text:tweet.text,reply:tweeet.in_reply_to_screen_name})
+    // method 3
+    // entry = {text:tweet.text,reply:tweeet.in_reply_to_screen_name}
+    // listOftext.push( entry )
+    
+  }
+  
+  res.render('index', { title: 'Express' ,list:listOftext});
 });
 
 module.exports = router;

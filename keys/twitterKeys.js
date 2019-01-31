@@ -4,4 +4,4 @@ let keys = {
     access_token_key: '',
     access_token_secret: ''
 }
-module.exports.keys = keys
+module.exports = keys

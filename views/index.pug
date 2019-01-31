@@ -3,3 +3,9 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  table
+    tr
+      th tweet
+    each val in list
+      tr
+        td #{val}
