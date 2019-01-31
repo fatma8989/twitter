@@ -14,7 +14,14 @@ router.get('/', async (req, res, next) => {
   var params = {screen_name: 'fatmafouad_y'};
   let tweets = await client.get('statuses/user_timeline', params)
   let listOfTweets = []
-  for(let tweet of tweets){
+  // for(let index in tweets){
+  //   let tweet = tweets[index]
+  // }
+  // for(let tweet of tweets){
+    
+  // }
+  for(let i =0 ;i < tweets.length ;i++){
+    let tweet = tweets[i]
     // method 1
     // entry = {}
     // entry.text = tweet.text
